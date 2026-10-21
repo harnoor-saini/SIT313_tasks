@@ -83,22 +83,18 @@ Open the local address shown in the terminal (usually `http://localhost:5173`).
 
 ## Pages
 
-| Route | Description |
-|---|---|
-| `/` | Home page |
-| `/login` | Login page |
+| Route     | Description  |
+| --------- | ------------ |
+| `/`       | Home page    |
+| `/login`  | Login page   |
 | `/signup` | Sign-up page |
-| `/post` | New Post page |
 
-## Validation Rules (Post Page)
+## Security Notes
 
-| Field | Applies to | Rule |
-|---|---|---|
-| Title | Question and Article | At least 5 characters |
-| Describe your problem | Question | At least 20 characters |
-| Abstract | Article | At least 20 characters |
-| Article Text | Article | At least 50 characters |
-| Tags | Question and Article | 1 to 3 tags, separated by commas, none empty, each 20 characters or less |
+- Passwords are hashed with bcrypt and never stored as plain text.
+- Firebase keys are stored in `.env`, which is excluded from version control.
+- Firestore rules allow only `read` and `create` on the `users` collection.
+- Failed logins show the same message whether the email or the password was wrong.
 
 ## Author
 Harnoor Saini, 2510994766
