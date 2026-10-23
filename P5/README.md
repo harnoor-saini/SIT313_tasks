@@ -1,101 +1,97 @@
-# DEV@Deakin: New Post Page (SIT313 Task C1)
+# SIT313 Task P5: Newsletter
 
-A React web app for the DEV@Deakin platform with a New Post page. The user chooses to submit either a Question or an Article, and the form changes to show the matching fields. Every field is validated, and a popup tells the user whether the post was sent or an error occurred.
-
-This project builds on Task P4, so the navigation bar, footer, routing, login page and sign-up page are still included.
-
-## Features
-
-- New Post page at `/post`, reached from the **Post** link in the navigation bar
-- Post type selection (Question or Article) using radio buttons
-- Conditional rendering with React `useState`, so the form changes with the selected type
-  - Question: Title, Describe your problem, Tags
-  - Article: Title, Abstract, Article Text, Tags
-- Validation on every field, with red messages under the field that needs fixing
-- Tags check: 1 to 3 tags, separated by commas, no empty tags, each 20 characters or less
-- Popup after pressing Post: success message or error message
-- Navigation bar and footer shown on every page
-
-Note: posts are not saved anywhere in this task. The popup only confirms the result. Saving posts will be added in a future task.
+Part of the DEV@Deakin web platform. This task connects the React frontend to the ExpressJS backend (from Task P2) so users can subscribe to the Daily Insider newsletter from the home page. When a user subscribes, a welcome email is sent using the SendGrid Email API.
 
 ## Tech Stack
 
-- React (Vite)
-- React Router (`react-router-dom`)
-- Firebase Firestore (used by the login and sign-up pages from Task P4)
-- bcryptjs (used by the login and sign-up pages from Task P4)
-- react-icons
-- CSS
+- **Frontend:** React (Vite), plain CSS
+- **Backend:** Node.js, ExpressJS
+- **Email API:** SendGrid (`@sendgrid/mail`)
+- **Other packages:** cors, dotenv
 
 ## Project Structure
 
 ```
-src/
-├── main.jsx            # Entry point, wraps the app in BrowserRouter
-├── App.jsx             # Routes and shared layout
-├── NavigationBar.jsx   # Top navigation bar
-├── Footer.jsx          # Site footer
-├── Home.jsx            # Home page content
-├── Login.jsx           # Login page and logic
-├── Signup.jsx          # Sign-up page and logic
-├── Post.jsx            # New Post page (conditional rendering, validation, popup)
-├── Firebase.js         # Firebase and Firestore connection
-└── App.css             # Styles
+P5/
+├── Backend/
+│   ├── server.js
+│   ├── package.json
+│   └── .env              (not committed)
+├── Frontend/
+│   └── Newsletter/       (React app)
+│       └── src/
+│           └── SubscribeContainer.jsx
+├── .gitignore
+└── README.md
 ```
 
-## Getting Started
+## How It Works
 
-### 1. Clone the repository
+1. The user types an email into the subscribe box on the home page and clicks **Subscribe**.
+2. The React frontend checks the email format, then sends a `POST` request to `http://localhost:3000/subscribe`.
+3. The ExpressJS backend validates the email again and sends a welcome email through SendGrid.
+4. The backend responds with a status code and message, and the frontend shows the result to the user.
 
-```bash
-git clone <repository-url>
-cd <project-folder>
+## API
+
+### POST `/subscribe`
+
+Request body:
+
+```json
+{ "email": "user@example.com" }
 ```
 
-### 2. Install dependencies
+| Status | Meaning | Response |
+| ------ | ------- | -------- |
+| 200 | Email sent successfully | `{ "message": "Subscribed successfully!" }` |
+| 400 | Email missing or invalid | `{ "error": "Email is required" }` or `{ "error": "Please enter a valid email address" }` |
+| 500 | SendGrid failed to send | `{ "error": "Failed to subscribe" }` |
 
-```bash
+Note: SendGrid itself returns status 202 (Accepted) when it queues an email. The backend logs this in the terminal and then responds to the frontend with 200.
+
+## Validation and Error Handling
+
+- The email is checked on the **frontend** (empty and invalid format) before any request is sent.
+- The email is checked again on the **backend**, since requests can be sent without using the form.
+- Both sides use `try-catch` to handle failed requests.
+- Errors show under the input field with a red border, and clear when the user starts typing. Success shows as a green message.
+
+## Setup and Run
+
+### 1. Backend
+
+```
+cd Backend
 npm install
 ```
 
-### 3. Create the `.env` file
-
-The login and sign-up pages use Firebase. Create a `.env` file in the project root (next to `package.json`):
+Create a `.env` file in the `Backend` folder:
 
 ```
-VITE_FIREBASE_API_KEY=
-VITE_FIREBASE_AUTH_DOMAIN=
-VITE_FIREBASE_PROJECT_ID=
-VITE_FIREBASE_STORAGE_BUCKET=
-VITE_FIREBASE_MESSAGING_SENDER_ID=
-VITE_FIREBASE_APP_ID=
+SENDGRID_API_KEY=your_sendgrid_api_key
+PORT=3000
 ```
 
-Fill in each value from your Firebase project, with no quotes. The `.env` file is listed in `.gitignore` and is not included in the repository.
+Start the server:
 
-### 4. Run the app
+```
+node server.js
+```
 
-```bash
+### 2. Frontend
+
+In a second terminal:
+
+```
+cd Frontend/Newsletter
+npm install
 npm run dev
 ```
 
-Open the local address shown in the terminal (usually `http://localhost:5173`).
+Open the local link shown in the terminal (usually `http://localhost:5173`).
 
-## Pages
+## Notes
 
-| Route     | Description  |
-| --------- | ------------ |
-| `/`       | Home page    |
-| `/login`  | Login page   |
-| `/signup` | Sign-up page |
-
-## Security Notes
-
-- Passwords are hashed with bcrypt and never stored as plain text.
-- Firebase keys are stored in `.env`, which is excluded from version control.
-- Firestore rules allow only `read` and `create` on the `users` collection.
-- Failed logins show the same message whether the email or the password was wrong.
-
-## Author
-Harnoor Saini, 2510994766
-SIT313 Secure Frontend Applications
+- `node_modules` and `.env` are excluded from the repository using `.gitignore`.
+- The sender address used in SendGrid must be a verified sender.
