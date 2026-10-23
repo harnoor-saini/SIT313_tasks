@@ -12,6 +12,10 @@ const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 app.use(cors());
 app.use(express.json());
 
+app.get("/", (req, res) => {
+  res.send("DEV@Deakin backend is running.");
+});
+
 app.post("/subscribe", async (req, res) => {
   const { email } = req.body;
 
