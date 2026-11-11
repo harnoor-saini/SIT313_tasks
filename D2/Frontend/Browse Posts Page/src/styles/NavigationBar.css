@@ -1,0 +1,102 @@
+.nav_menu {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  padding: 10px 20px;
+  margin: 0;
+}
+
+.nav_menu a {
+  text-decoration: none;
+  color: rgb(173, 216, 230);
+  font-weight: bold;
+  font-size: smaller;
+}
+
+.nav_menu a:hover {
+  color: rgb(113, 199, 227);
+  text-decoration: underline;
+}
+
+.nav_brand a {
+  font-size: 16px;
+}
+
+.nav_search {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.nav_search input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 6px 10px 6px 30px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f5f5f5;
+  font-size: 13px;
+}
+
+/* Navigation authentication */
+.nav_auth {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+.nav_menu .nav_greeting {
+  color: rgb(173, 216, 230);
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.nav_menu .nav_greeting:hover {
+  color: rgb(113, 199, 227);
+  text-decoration: underline;
+}
+
+/* Logout button */
+.nav_logout {
+  padding: 8px 16px;
+  background-color: #17a2b8;
+  color: white;
+  border: 1px solid #17a2b8;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.nav_logout:hover {
+  background-color: #12889b;
+  border-color: #12889b;
+}
+
+.search_icon {
+  position: absolute;
+  left: 10px;
+  color: #999;
+  font-size: 12px;
+}
+
+/* Plan badge */
+.nav_plan {
+  padding: 2px 10px;
+  border-radius: 12px;
+  background-color: #e8f7f9;
+  color: #117b8b;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.nav_plan_paid {
+  background-color: #17a2b8;
+  color: white;
+}

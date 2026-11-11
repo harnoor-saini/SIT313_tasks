@@ -1,0 +1,89 @@
+/* POST */
+.post_page {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+.post_bar {
+  background-color: #e5e5e5;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 6px 10px;
+  margin: 15px 0;
+}
+
+.post_type {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  font-size: 14px;
+}
+
+.post_form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.post_row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.post_row label {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.post_row input {
+  flex: 1;
+  padding: 6px;
+  border: 1px solid #999;
+  font-size: 13px;
+}
+
+.post_label {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.post_big_box {
+  height: 250px;
+  padding: 8px;
+  border: 1px solid #999;
+  font-size: 13px;
+}
+
+.post_small_box {
+  height: 70px;
+  padding: 8px;
+  border: 1px solid #999;
+  font-size: 13px;
+}
+
+.post_btn_row {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 25px;
+}
+
+.post_btn {
+  padding: 8px 50px;
+  background-color: #17a2b8;
+  color: white;
+  border: none;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.post_btn:hover {
+  background-color: #12889b;
+}
+
+.post_error {
+  color: #d9534f;
+  font-size: 13px;
+  margin: 0;
+}

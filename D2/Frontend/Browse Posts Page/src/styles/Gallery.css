@@ -1,0 +1,32 @@
+.Gallery {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.my-gallery {
+  color: #17a2b8;
+  font-weight: 500;
+  font-size: 20px;
+  text-align: center;
+}
+
+.photos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.photos img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.photos img:hover {
+  transform: scale(1.1);
+}

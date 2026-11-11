@@ -1,0 +1,36 @@
+.signup_box {
+  max-width: 600px;
+}
+
+.signup_title {
+  text-align: center;
+  color: #17a2b8;
+  margin: 10px 0 30px 0;
+}
+
+.signup_form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 0 20px 20px 20px;
+}
+
+.signup_row {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.signup_row label {
+  width: 150px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.signup_row input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}

@@ -1,0 +1,26 @@
+.project {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin: 30px auto;
+  max-width: 600px;
+}
+
+.project img {
+  width: 250px;
+  border-radius: 20px;
+}
+
+.project-desc {
+  font-size: 12px;
+}
+
+.project-desc a {
+  color: #17a2b8;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.project-desc a:hover {
+  text-decoration: underline;
+}

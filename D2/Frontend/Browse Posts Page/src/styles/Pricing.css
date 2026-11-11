@@ -1,0 +1,236 @@
+/* D1 Pricing */
+.pricing_page {
+  min-height: 80vh;
+  padding: 35px 25px 45px;
+  color: #263746;
+  background: #f7f9fc;
+  text-align: center;
+}
+
+.pricing_header {
+  max-width: 680px;
+  margin: 0 auto 40px;
+}
+
+.pricing_header h1 {
+  margin: 0 0 12px;
+  color: #263746;
+  font-size: 32px;
+}
+
+.pricing_header p {
+  color: #687783;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.pricing_label {
+  margin: 4px 0 12px;
+  color: #17a2b8;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+}
+
+.pricing_plans {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: wrap;
+  gap: 22px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.pricing_card {
+  position: relative;
+  display: flex;
+  flex: 1 1 230px;
+  flex-direction: column;
+  box-sizing: border-box;
+  max-width: 300px;
+  min-height: 420px;
+  padding: 28px 22px 22px;
+  background: #fff;
+  border: 1px solid #dce3e8;
+  border-radius: 10px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.pricing_card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.1);
+}
+
+.recommended_plan {
+  border: 2px solid #17a2b8;
+}
+
+.recommended_badge {
+  position: absolute;
+  top: -13px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 6px 13px;
+  border-radius: 20px;
+  background: #17a2b8;
+  color: #fff;
+  font-size: 10px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.pricing_card h2 {
+  margin: 0 0 12px;
+  color: #263746;
+  font-size: 22px;
+}
+
+.pricing_description {
+  min-height: 42px;
+  margin: 0;
+  color: #687783;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.pricing_price {
+  margin: 20px 0;
+  color: #263746;
+  font-size: 29px;
+  font-weight: bold;
+}
+
+.pricing_price span {
+  color: #78858e;
+  font-size: 12px;
+  font-weight: normal;
+}
+
+.pricing_features {
+  flex: 1;
+  margin: 4px 0 0;
+  padding: 0;
+  text-align: left;
+  list-style: none;
+}
+
+.pricing_features li,
+.pricing_features p {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  margin: 0 0 16px;
+  color: #52616b;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.feature_check {
+  color: #17a2b8;
+  font-weight: bold;
+}
+
+.pricing_action {
+  margin-top: auto;
+  padding-top: 22px;
+}
+
+.pricing_action button,
+.pricing_action > button,
+.pricing_action.upgrade_plan_button,
+.pricing_action.current_plan_button {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 42px;
+  padding: 10px 12px;
+  border: 1px solid #17a2b8;
+  border-radius: 5px;
+  font-size: 13px;
+  font-weight: bold;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.upgrade_plan_button,
+.pricing_action .upgrade_plan_button {
+  background: #17a2b8;
+  color: #fff;
+  cursor: pointer;
+}
+
+.upgrade_plan_button:hover:not(:disabled),
+.pricing_action .upgrade_plan_button:hover:not(:disabled) {
+  border-color: #12889b;
+  background: #12889b;
+}
+
+.current_plan_button,
+.pricing_action .current_plan_button {
+  background: #e8f7f9;
+  color: #117b8b;
+  cursor: default;
+}
+
+.pricing_action button:disabled {
+  cursor: not-allowed;
+  opacity: 1;
+}
+
+.pricing_note,
+.pricing_loading {
+  margin: 24px auto 0;
+  color: #687783;
+  font-size: 13px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.pricing_error,
+.upgrade_error {
+  margin: 16px 0;
+  padding: 10px 12px;
+  border-radius: 5px;
+  background: #fdecea;
+  color: #b42318;
+  font-size: 13px;
+}
+
+/* Selected plan (inverted colors) */
+.pricing_card.selected_plan {
+  background: #17a2b8;
+  border-color: #17a2b8;
+  box-shadow: 0 8px 22px rgba(23, 162, 184, 0.35);
+}
+
+.pricing_card.selected_plan h2,
+.pricing_card.selected_plan .pricing_label,
+.pricing_card.selected_plan .pricing_description,
+.pricing_card.selected_plan .pricing_price,
+.pricing_card.selected_plan .pricing_price span,
+.pricing_card.selected_plan .pricing_features li,
+.pricing_card.selected_plan .pricing_features p,
+.pricing_card.selected_plan .feature_check {
+  color: #fff;
+}
+
+.pricing_card.selected_plan .pricing_price span,
+.pricing_card.selected_plan .pricing_description {
+  opacity: 0.9;
+}
+
+.pricing_card.selected_plan .recommended_badge {
+  background: #fff;
+  color: #17a2b8;
+  border: 1px solid #17a2b8;
+}
+
+.pricing_card.selected_plan .pricing_action .current_plan_button {
+  background: #fff;
+  border-color: #fff;
+  color: #117b8b;
+}
